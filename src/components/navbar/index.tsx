@@ -1,16 +1,18 @@
+import { Nav, Logo, H3, H4, Button, Span, Img } from "./styles";
 import cart from "../../assets/icons/cart.png";
 
 export default function Navbar() {
   return (
-    <nav>
-      <div>
-        <h3>MKS</h3>
-        <h4>Sistemas</h4>
-      </div>
+    <Nav>
+      <Logo>
+        <H3>MKS</H3>
+        <H4>Sistemas</H4>
+      </Logo>
 
-      <button>
-        <img src={cart} alt={cart} />
-      </button>
-    </nav>
+      <Button>
+        <Img src={cart} alt={cart} />
+        <Span>0</Span>
+      </Button>
+    </Nav>
   );
 }
