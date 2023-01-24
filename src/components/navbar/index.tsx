@@ -1,4 +1,4 @@
-import { Nav, Logo, H3, H4, Button, Span, Img } from "./styles";
+import { Nav, Logo, H3, H4, Button, Span, Img, Cart } from "./styles";
 import cart from "../../assets/icons/cart.png";
 
 export default function Navbar() {
@@ -13,6 +13,7 @@ export default function Navbar() {
         <Img src={cart} alt={cart} />
         <Span>0</Span>
       </Button>
+     <Cart></Cart>
     </Nav>
   );
 }

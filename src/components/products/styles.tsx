@@ -4,17 +4,15 @@ export const Container = styled("div")`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  margin-top: 116px;
+  margin-bottom: 172px;
 `;
 
 export const GridProcucts = styled("div")`
   max-width: 1000px;
   width: 100%;
-  height: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
 `;
 
 export const ProductItem = styled("div")`
@@ -74,6 +72,7 @@ export const Button = styled("button")`
   border: none;
   align-items: center;
   background-color: #0f52ba;
+  cursor: pointer;
 `;
 
 export const Span = styled("span")`
