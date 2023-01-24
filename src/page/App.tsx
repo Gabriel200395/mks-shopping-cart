@@ -1,9 +1,13 @@
+import Navbar from "../components/navbar";
+
 function App() {
-  return <div>Iniciando Projeto</div>;
+  return (
+    <>
+      <Navbar />
+    </>
+  );
 }
 
-export default App; 
-
-
+export default App;
 
 //font-family: 'Montserrat', sans-serif;
