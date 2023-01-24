@@ -7,7 +7,8 @@ export const Nav = styled("nav")`
   align-items: center;
   padding-right: 65px;
   padding-left: 65px;
-  background-color: #0f52ba;
+  background-color: #0f52ba; 
+  margin-bottom:30px;
 `;
 
 export const Logo = styled("div")`
