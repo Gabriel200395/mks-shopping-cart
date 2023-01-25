@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Nav = styled("nav")`
   display: flex;
   justify-content: space-between;
-  height: 80px;
+  height: 101px;
   align-items: center;
   padding-right: 65px;
   padding-left: 65px;
@@ -60,34 +60,56 @@ color: #000;
 export const Cart = styled("div")`
   position: absolute;
   top: 0px;
+  height: auto;
   right: 0px;
   background: #0f52ba;
   box-shadow: -5px 0px 6px rgba(0, 0, 0, 0.13);
-  height: 1024px;
-  width: 486px; 
-/*   .header {
-    display: flex;
-    height: 56px;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 20px;
-    padding-right: 20px;
+  width: 486px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+  .header {
+    background: red;
+    height: 80px;
+    width: 100%; 
   }
 
-  .product {
-    background: #ffffff;
-    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.05);
-    border-radius: 8px;
-    width: 379px;
-    height: 95px; 
-    margin-bottom: 28px;
-  } 
-
-  products {
+  .products {
+    background: pink;
+    height:auto;
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-  } */
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .footer {
+    background: #e11236;
+    height: 180px;
+    width: 100%;
+  }
+    
+  .container {
+    overflow-y: scroll;
+  }
+
+ 
+  .scroll {
+  /*   padding-top: 170px;
+    padding-bottom: 70px; */
+  }
+
+
+  .item {
+    width: 379px;
+    height: 95px;
+    border-radius: 8px;
+    background: #fff;
+    margin-bottom: 28px;
+  }
 `;
