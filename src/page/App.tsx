@@ -1,15 +1,16 @@
 import CartProducts from "../components/cartProducts";
 import Navbar from "../components/navbar";
-
-import Products from "../components/products";
+import Products from "../components/products"; 
+import Footer from "../components/footer";
 
 function App() {
   return (
     <>
       <Navbar />
-      <Products />
-      <CartProducts />
-    </>
+      <Products /> 
+      <Footer />
+{/*       <CartProducts />
+ */}    </>
   );
 }
 
