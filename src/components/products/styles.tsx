@@ -9,15 +9,16 @@ export const Container = styled("div")`
 `;
 
 export const GridProcucts = styled("div")`
-  max-width: 1000px;
+  max-width: 1200px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 `;
 
 export const ProductItem = styled("div")`
   height: 285px;
-  width: 217.56px;
+  width: 240px;
   margin: 10px 10px;
   border-radius: 8px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.135216);
@@ -36,12 +37,14 @@ export const GridTexts = styled("div")`
   justify-content: center;
   align-items: center;
   margin-bottom: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
 `;
 
 export const H3 = styled("h3")`
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 15px;
   color: #000;
   width: 124px;
 `;

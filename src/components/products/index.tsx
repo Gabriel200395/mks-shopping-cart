@@ -13,157 +13,42 @@ import {
   H4,
 } from "./styles";
 
-import apple from "../../assets/icons/apple-watch.png";
 import cart from "../../assets/icons/shopping-bag.png";
+import { useProduct } from "../hooks";
 
 export default function Products() {
+  const { products } = useProduct();
+
   return (
     <Container>
       <GridProcucts>
-        <ProductItem>
-          <GridImg>
-            <Img src={apple} alt={apple} height={138} />
-          </GridImg>
-          <GridTexts>
-            <H3>Apple Watch Series 4 GPS</H3>
-            <H4>R$399</H4>
-          </GridTexts>
-          <GridText>
-            <Paragraph>
-              Redesigned from scratch and completely revised.
-            </Paragraph>
-          </GridText>
-          <Button>
-            <Img src={cart} alt={cart} />
-            <Span>Comprar</Span>
-          </Button>
-        </ProductItem> 
-        <ProductItem>
-          <GridImg>
-            <Img src={apple} alt={apple} height={138} />
-          </GridImg>
-          <GridTexts>
-            <H3>Apple Watch Series 4 GPS</H3>
-            <H4>R$399</H4>
-          </GridTexts>
-          <GridText>
-            <Paragraph>
-              Redesigned from scratch and completely revised.
-            </Paragraph>
-          </GridText>
-          <Button>
-            <Img src={cart} alt={cart} />
-            <Span>Comprar</Span>
-          </Button>
-        </ProductItem>
-        <ProductItem>
-          <GridImg>
-            <Img src={apple} alt={apple} height={138} />
-          </GridImg>
-          <GridTexts>
-            <H3>Apple Watch Series 4 GPS</H3>
-            <H4>R$399</H4>
-          </GridTexts>
-          <GridText>
-            <Paragraph>
-              Redesigned from scratch and completely revised.
-            </Paragraph>
-          </GridText>
-          <Button>
-            <Img src={cart} alt={cart} />
-            <Span>Comprar</Span>
-          </Button>
-        </ProductItem>
-        <ProductItem>
-          <GridImg>
-            <Img src={apple} alt={apple} height={138} />
-          </GridImg>
-          <GridTexts>
-            <H3>Apple Watch Series 4 GPS</H3>
-            <H4>R$399</H4>
-          </GridTexts>
-          <GridText>
-            <Paragraph>
-              Redesigned from scratch and completely revised.
-            </Paragraph>
-          </GridText>
-          <Button>
-            <Img src={cart} alt={cart} />
-            <Span>Comprar</Span>
-          </Button>
-        </ProductItem>
-        <ProductItem>
-          <GridImg>
-            <Img src={apple} alt={apple} height={138} />
-          </GridImg>
-          <GridTexts>
-            <H3>Apple Watch Series 4 GPS</H3>
-            <H4>R$399</H4>
-          </GridTexts>
-          <GridText>
-            <Paragraph>
-              Redesigned from scratch and completely revised.
-            </Paragraph>
-          </GridText>
-          <Button>
-            <Img src={cart} alt={cart} />
-            <Span>Comprar</Span>
-          </Button>
-        </ProductItem>
-        <ProductItem>
-          <GridImg>
-            <Img src={apple} alt={apple} height={138} />
-          </GridImg>
-          <GridTexts>
-            <H3>Apple Watch Series 4 GPS</H3>
-            <H4>R$399</H4>
-          </GridTexts>
-          <GridText>
-            <Paragraph>
-              Redesigned from scratch and completely revised.
-            </Paragraph>
-          </GridText>
-          <Button>
-            <Img src={cart} alt={cart} />
-            <Span>Comprar</Span>
-          </Button>
-        </ProductItem>
-        <ProductItem>
-          <GridImg>
-            <Img src={apple} alt={apple} height={138} />
-          </GridImg>
-          <GridTexts>
-            <H3>Apple Watch Series 4 GPS</H3>
-            <H4>R$399</H4>
-          </GridTexts>
-          <GridText>
-            <Paragraph>
-              Redesigned from scratch and completely revised.
-            </Paragraph>
-          </GridText>
-          <Button>
-            <Img src={cart} alt={cart} />
-            <Span>Comprar</Span>
-          </Button>
-        </ProductItem>
-        <ProductItem>
-          <GridImg>
-            <Img src={apple} alt={apple} height={138} />
-          </GridImg>
-          <GridTexts>
-            <H3>Apple Watch Series 4 GPS</H3>
-            <H4>R$399</H4>
-          </GridTexts>
-          <GridText>
-            <Paragraph>
-              Redesigned from scratch and completely revised.
-            </Paragraph>
-          </GridText>
-          <Button>
-            <Img src={cart} alt={cart} />
-            <Span>Comprar</Span>
-          </Button>
-        </ProductItem>
+        {products?.map((product) => {
+          return (
+            <ProductItem key={product.id}>
+              <GridImg>
+                <Img src={product.photo} alt={product.photo} height={138} />
+              </GridImg>
+              <GridTexts>
+                <H3>{product.name}</H3>
+                <H4>
+                  {Number(product.price).toLocaleString("pt-BR", {
+                    currency: "BRL",
+                    style: "currency",
+                  })}
+                </H4>
+              </GridTexts>
+              <GridText>
+                <Paragraph>
+                  Redesigned from scratch and completely revised.
+                </Paragraph>
+              </GridText>
+              <Button>
+                <Img src={cart} alt={cart} />
+                <Span>Comprar</Span>
+              </Button>
+            </ProductItem>
+          );
+        })}
       </GridProcucts>
     </Container>
   );
