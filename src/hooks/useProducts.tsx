@@ -3,7 +3,8 @@ import {
   PRODUCTS_FETCH_LOADING,
   PRODUCTS_FETCH_SUCESS,
   PRODUCTS_FETCH_ERROR,
-} from "../../context/reducers/products";
+} from "../context/reducers/products";
+import { ADD_SHOOPING_CART } from "../context/reducers/pruductsCart";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -55,7 +56,12 @@ export default function useProducts() {
     RequestProductsAll();
   }, []);
 
+  function addProductCart(product: DataProducts) {
+    return dispacth(ADD_SHOOPING_CART(product));
+  }
+
   return {
-    products,
+    products, 
+    addProductCart
   };
 }

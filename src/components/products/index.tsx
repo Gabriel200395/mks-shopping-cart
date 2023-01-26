@@ -14,10 +14,10 @@ import {
 } from "./styles";
 
 import cart from "../../assets/icons/shopping-bag.png";
-import { useProduct } from "../hooks";
+import { useProduct } from "../../hooks";
 
 export default function Products() {
-  const { products } = useProduct();
+  const { products, addProductCart } = useProduct();
 
   return (
     <Container>
@@ -42,7 +42,7 @@ export default function Products() {
                   Redesigned from scratch and completely revised.
                 </Paragraph>
               </GridText>
-              <Button>
+              <Button onClick={() => addProductCart(product)}>
                 <Img src={cart} alt={cart} />
                 <Span>Comprar</Span>
               </Button>
