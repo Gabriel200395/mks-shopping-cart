@@ -22,7 +22,7 @@ type RespondeData = {
   count: number;
 };
 
-type statePropertes = {
+type DataState = {
   stateProducts: {
     products: null | DataProducts[];
     loading: null | boolean;
@@ -31,9 +31,7 @@ type statePropertes = {
 };
 
 export default function useProducts() {
-  const { products } = useSelector(
-    (state: statePropertes) => state.stateProducts
-  );
+  const { products } = useSelector((state: DataState) => state.stateProducts);
 
   const dispacth = useDispatch();
 
@@ -61,7 +59,7 @@ export default function useProducts() {
   }
 
   return {
-    products, 
-    addProductCart
+    products,
+    addProductCart,
   };
 }

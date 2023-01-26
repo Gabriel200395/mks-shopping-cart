@@ -1,7 +1,18 @@
 import { Nav, Logo, H3, H4, Button, Span, Img } from "./styles";
 import cart from "../../assets/icons/cart.png";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
+  type DataState = {
+    stateShoopingCart: {
+      shoopingCart: [];
+    };
+  };
+
+  const { shoopingCart } = useSelector(
+    (state: DataState) => state.stateShoopingCart
+  );
+
   return (
     <Nav>
       <Logo>
@@ -11,7 +22,7 @@ export default function Navbar() {
 
       <Button>
         <Img src={cart} alt={cart} />
-        <Span>0</Span>
+        <Span>{shoopingCart.length}</Span>
       </Button>
     </Nav>
   );
