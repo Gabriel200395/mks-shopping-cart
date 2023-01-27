@@ -19,6 +19,7 @@ function App() {
     description: string;
     photo: string;
     price: string;
+    theAmount: number;
   };
 
   type DataState = {

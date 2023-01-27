@@ -6,11 +6,13 @@ type PropertesProducts = {
   brand: string;
   description: string;
   photo: string;
-  price: string;
+  price: number;
+  theAmount: number;
+  total: number;
 };
 
 type IntancesCartProducts = {
-  shoopingCart: [] | PropertesProducts[];
+  shoopingCart: PropertesProducts[];
   seeProducts: boolean;
 };
 
@@ -26,7 +28,7 @@ const pruductsCart = createSlice({
     AddShoppingCart(state, action: PayloadAction<PropertesProducts>) {
       return {
         shoopingCart: [...state.shoopingCart, action.payload],
-        seeProducts: false,
+        seeProducts: state.seeProducts,
       };
     },
 
@@ -36,8 +38,26 @@ const pruductsCart = createSlice({
         seeProducts: action.payload,
       };
     },
+    IncrementProductCart(state, action: PayloadAction<PropertesProducts[]>) {
+      return {
+        shoopingCart: action.payload,
+        seeProducts: state.seeProducts,
+      };
+    },
+
+    DecrementProductCart(state, action: PayloadAction<PropertesProducts[]>) {
+      return {
+        shoopingCart: action.payload,
+        seeProducts: state.seeProducts,
+      };
+    },
   },
 });
 
-export const { AddShoppingCart, SeeProductsCart } = pruductsCart.actions;
+export const {
+  AddShoppingCart,
+  SeeProductsCart,
+  IncrementProductCart,
+  DecrementProductCart,
+} = pruductsCart.actions;
 export default pruductsCart.reducer;

@@ -6,7 +6,9 @@ type PropertesProducts = {
   brand: string;
   description: string;
   photo: string;
-  price: string;
+  price: number;
+  theAmount: number;
+  total: number;
 };
 
 type IntancesProducts = {

@@ -14,7 +14,9 @@ type DataProducts = {
   brand: string;
   description: string;
   photo: string;
-  price: string;
+  price: number;
+  theAmount: number;
+  total: number;
 };
 
 type RespondeData = {
@@ -55,7 +57,7 @@ export default function useProducts() {
   }, []);
 
   function addProductCart(product: DataProducts) {
-    return dispacth(AddShoppingCart(product));
+    return dispacth(AddShoppingCart({ ...product, theAmount: 1, total: Number(product.price)}));
   }
 
   return {

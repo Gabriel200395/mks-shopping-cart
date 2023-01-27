@@ -125,8 +125,8 @@ export const Container = styled("div")`
       font-size: 13px;
       line-height: 17px;
       color: #2c2c2c;
-      width: 113px;
-      margin-left: 21px;
+      width: 120px;
+      margin-left: 15px;
     }
 
     .close {
@@ -153,7 +153,8 @@ export const Container = styled("div")`
 
   .product-grid-elements {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
+    margin-right: 5px;
 
     .product-text-theAmount {
       font-family: "Montserrat";
