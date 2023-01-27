@@ -2,7 +2,9 @@ import Navbar from "../components/navbar";
 import Products from "../components/products";
 import Footer from "../components/footer";
 import CartProducts from "../components/cartProducts";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { SeeProductsCart } from "../context/reducers/pruductsCart";
 
 //fazer parte logica de incrementar e decrementar
 //fazer calculo de produtos
@@ -29,11 +31,18 @@ function App() {
     };
   };
 
-  const { seeProducts } = useSelector(
+  const { seeProducts, shoopingCart } = useSelector(
     (state: DataState) => state.stateShoopingCart
   );
 
-  console.log(seeProducts);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (shoopingCart.length < 1) {
+      dispatch(SeeProductsCart(false));
+    }
+  }, [shoopingCart]);
+
   return (
     <>
       <Navbar />
