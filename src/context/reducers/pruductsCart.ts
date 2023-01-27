@@ -50,6 +50,13 @@ const pruductsCart = createSlice({
         shoopingCart: action.payload,
         seeProducts: state.seeProducts,
       };
+    }, 
+
+    RemoveProductCart(state, action: PayloadAction<PropertesProducts[]>) {
+      return {
+        shoopingCart: action.payload,
+        seeProducts: state.seeProducts,
+      };
     },
   },
 });
@@ -58,6 +65,7 @@ export const {
   AddShoppingCart,
   SeeProductsCart,
   IncrementProductCart,
-  DecrementProductCart,
+  DecrementProductCart, 
+  RemoveProductCart
 } = pruductsCart.actions;
 export default pruductsCart.reducer;

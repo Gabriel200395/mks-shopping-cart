@@ -4,8 +4,9 @@ import {
   SeeProductsCart,
   DecrementProductCart,
   IncrementProductCart,
+  RemoveProductCart,
 } from "../../context/reducers/pruductsCart";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function CartProducts() {
   type DataProducts = {
@@ -31,8 +32,7 @@ export default function CartProducts() {
     (state: DataState) => state.stateShoopingCart
   );
 
-  const [productsCart, setProductsCart] =
-    useState<DataProducts[]>(shoopingCart);
+  const [productsCart, setProductsCart] = useState<DataProducts[]>([]);
 
   function CalculateTheMountProduct(
     id: number,
@@ -75,6 +75,23 @@ export default function CartProducts() {
 
     return productIdDecrement;
   }
+
+  function removeProductItem(id: number) {
+    let IdProductItem = productsCart.filter((product) => product.id !== id);
+    setProductsCart(IdProductItem);
+
+    return IdProductItem;
+  }
+
+  useEffect(() => {
+    setProductsCart(shoopingCart);
+  }, [shoopingCart]);
+
+  const finalAmountPayable = productsCart
+    .reduce((total, state) => {
+      return state.total + total;
+    }, 0)
+    .toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
   return (
     <Container>
@@ -127,7 +144,14 @@ export default function CartProducts() {
                       </Span>
                     </Grid>
                   </Grid>
-                  <Button className="close">x</Button>
+                  <Button
+                    className="close"
+                    onClick={() =>
+                      dispatch(RemoveProductCart(removeProductItem(product.id)))
+                    }
+                  >
+                    x
+                  </Button>
                 </Grid>
               </Grid>
             );
@@ -137,7 +161,7 @@ export default function CartProducts() {
       <Grid className="container-checkout">
         <Grid className="price">
           <Span>Total:</Span>
-          <Span>R$798</Span>
+          <Span>{finalAmountPayable}</Span>
         </Grid>
         <Button>Finalizar Compra</Button>
       </Grid>
