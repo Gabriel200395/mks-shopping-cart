@@ -11,23 +11,33 @@ type PropertesProducts = {
 
 type IntancesCartProducts = {
   shoopingCart: [] | PropertesProducts[];
+  seeProducts: boolean;
 };
 
 const initialState: IntancesCartProducts = {
   shoopingCart: [],
+  seeProducts: false,
 };
 
 const pruductsCart = createSlice({
   name: "CART_PRODUCTS",
   initialState,
   reducers: {
-    ADD_SHOOPING_CART(state, action: PayloadAction<PropertesProducts>) {
+    AddShoppingCart(state, action: PayloadAction<PropertesProducts>) {
       return {
         shoopingCart: [...state.shoopingCart, action.payload],
+        seeProducts: false,
+      };
+    },
+
+    SeeProductsCart(state, action: PayloadAction<boolean>) {
+      return {
+        shoopingCart: state.shoopingCart,
+        seeProducts: action.payload,
       };
     },
   },
 });
 
-export const { ADD_SHOOPING_CART } = pruductsCart.actions;
+export const { AddShoppingCart, SeeProductsCart } = pruductsCart.actions;
 export default pruductsCart.reducer;

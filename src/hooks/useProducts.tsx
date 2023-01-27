@@ -4,7 +4,7 @@ import {
   PRODUCTS_FETCH_SUCESS,
   PRODUCTS_FETCH_ERROR,
 } from "../context/reducers/products";
-import { ADD_SHOOPING_CART } from "../context/reducers/pruductsCart";
+import { AddShoppingCart } from "../context/reducers/pruductsCart";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -55,7 +55,7 @@ export default function useProducts() {
   }, []);
 
   function addProductCart(product: DataProducts) {
-    return dispacth(ADD_SHOOPING_CART(product));
+    return dispacth(AddShoppingCart(product));
   }
 
   return {

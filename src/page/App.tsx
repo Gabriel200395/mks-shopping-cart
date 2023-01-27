@@ -1,23 +1,45 @@
 import Navbar from "../components/navbar";
 import Products from "../components/products";
 import Footer from "../components/footer";
+import CartProducts from "../components/cartProducts";
+import { useSelector } from "react-redux";
 
-//configurar redux projeto
-//fazer requisição de produtos
 //fazer parte logica de incrementar e decrementar
 //fazer calculo de produtos
-//quantidade produtos carrinho
-//abrir modal de cart 
+//abrir modal de cart
+
 //loading projeto
+//refatorar projeto
 
 function App() {
+  type DataProducts = {
+    id: number;
+    name: string;
+    brand: string;
+    description: string;
+    photo: string;
+    price: string;
+  };
+
+  type DataState = {
+    stateShoopingCart: {
+      shoopingCart: DataProducts[];
+      seeProducts: boolean;
+    };
+  };
+
+  const { seeProducts } = useSelector(
+    (state: DataState) => state.stateShoopingCart
+  );
+
+  console.log(seeProducts);
   return (
     <>
       <Navbar />
       <Products />
       <Footer />
-      {/*       <CartProducts />
-       */}{" "}
+
+      {seeProducts && <CartProducts />}
     </>
   );
 }
