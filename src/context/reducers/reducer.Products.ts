@@ -23,18 +23,18 @@ const initialState: IntancesProducts = {
   error: null,
 };
 
-const productsReducers = createSlice({
+const stateProducts = createSlice({
   name: "PRODUCTS",
   initialState,
   reducers: {
-    PRODUCTS_FETCH_LOADING(_, action: PayloadAction<boolean>) {
+    ProductFetchLoading(_, action: PayloadAction<boolean>) {
       return {
         products: null,
         loading: action.payload,
         error: null,
       };
     },
-    PRODUCTS_FETCH_ERROR(_, action: PayloadAction<boolean>) {
+    ProductsFetchError(_, action: PayloadAction<boolean>) {
       return {
         products: [],
         loading: false,
@@ -42,7 +42,7 @@ const productsReducers = createSlice({
       };
     },
 
-    PRODUCTS_FETCH_SUCESS(_, action: PayloadAction<PropertesProducts[]>) {
+    ProductsFetchSucess(_, action: PayloadAction<PropertesProducts[]>) {
       return {
         products: action.payload,
         loading: false,
@@ -52,10 +52,7 @@ const productsReducers = createSlice({
   },
 });
 
-export const {
-  PRODUCTS_FETCH_ERROR,
-  PRODUCTS_FETCH_LOADING,
-  PRODUCTS_FETCH_SUCESS,
-} = productsReducers.actions;
+export const { ProductFetchLoading, ProductsFetchError, ProductsFetchSucess } =
+  stateProducts.actions;
 
-export default productsReducers.reducer;
+export default stateProducts.reducer;

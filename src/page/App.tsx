@@ -4,11 +4,12 @@ import Footer from "../components/footer";
 import CartProducts from "../components/cartProducts";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { SeeProductsCart } from "../context/reducers/pruductsCart";
+import { SeeProductsCart } from "../context/reducers/reducer.Cart";
 
-//fazer parte logica de incrementar e decrementar
-//fazer calculo de produtos
-//abrir modal de cart
+//mudar nome do arquivo reducers  
+//state global aplicação 
+//arrumar nomes de funções!
+
 
 //loading projeto
 //refatorar projeto

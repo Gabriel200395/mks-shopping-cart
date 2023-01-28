@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import {
-  PRODUCTS_FETCH_LOADING,
-  PRODUCTS_FETCH_SUCESS,
-  PRODUCTS_FETCH_ERROR,
-} from "../context/reducers/products";
-import { AddShoppingCart } from "../context/reducers/pruductsCart";
+  ProductFetchLoading,
+  ProductsFetchSucess,
+  ProductsFetchError,
+} from "../context/reducers/reducer.Products";
+import { AddProductShoppingCart } from "../context/reducers/reducer.Cart";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -50,56 +50,59 @@ export default function useProducts() {
 
   const dispacth = useDispatch();
 
-  useEffect(() => {
-    async function RequestProductsAll() {
-      try {
-        dispacth(PRODUCTS_FETCH_LOADING(true));
-        const productsData = await axios.get<RespondeData>(
-          "https://mks-challenge-api-frontend.herokuapp.com/api/v1/products?page=1&rows=8&sortBy=id&orderBy=ASC"
-        );
+  async function RequestProductsAll() {
+    try {
+      dispacth(ProductFetchLoading(true));
+      const productsData = await axios.get<RespondeData>(
+        "https://mks-challenge-api-frontend.herokuapp.com/api/v1/products?page=1&rows=8&sortBy=id&orderBy=ASC"
+      );
 
-        const { products } = productsData.data;
-        dispacth(PRODUCTS_FETCH_LOADING(false));
-        dispacth(PRODUCTS_FETCH_SUCESS(products));
-      } catch (error) {
-        dispacth(PRODUCTS_FETCH_ERROR(true));
-      }
+      const { products } = productsData.data;
+      dispacth(ProductFetchLoading(false));
+      dispacth(ProductsFetchSucess(products));
+    } catch (error) {
+      dispacth(ProductsFetchError(true));
     }
+  }
 
-    RequestProductsAll();
-  }, []);
+  function ItemsProductsDuplicates() {
+    const ProdutoKey = new Set();
 
-  let c = 1;
-  useEffect(() => {
-    const setProduct = new Set();
+    const FilterProductsCart = addProductCartState.filter((product) => {
+      let DuplicatesProducts = ProdutoKey.has(product.id);
 
-    const filterProducts = addProductCartState.filter((product) => {
-      let duplicateProducts = setProduct.has(product.id);
-
-      if (duplicateProducts) {
+      if (DuplicatesProducts) {
         setAddProductCartState(
-          shoopingCart.map((item) => {
-            if (item.id === product.id) {
+          shoopingCart.map((cartItemProduct) => {
+            if (cartItemProduct.id === product.id) {
               return {
-                ...item,
-                theAmount: item.theAmount + 1,
-                total: (item.theAmount + 1) * item.price,
+                ...cartItemProduct,
+                theAmount: cartItemProduct.theAmount + 1,
+                total: (cartItemProduct.theAmount + 1) * cartItemProduct.price,
               };
             }
 
-            return item;
+            return cartItemProduct;
           })
         );
         console.log("Produto Ja existe no Carrinho");
       }
 
-      setProduct.add(product.id);
-      return !duplicateProducts;
+      ProdutoKey.add(product.id);
+      return !DuplicatesProducts;
     });
 
-    if (filterProducts.length) {
-      dispacth(AddShoppingCart(filterProducts));
+    if (FilterProductsCart.length) {
+      dispacth(AddProductShoppingCart(FilterProductsCart));
     }
+  }
+
+  useEffect(() => {
+    RequestProductsAll();
+  }, []);
+
+  useEffect(() => {
+    ItemsProductsDuplicates();
   }, [addProductCartState]);
 
   useEffect(() => {

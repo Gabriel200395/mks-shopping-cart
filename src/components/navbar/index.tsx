@@ -1,7 +1,7 @@
 import { Nav, Logo, H3, H4, Button, Span, Img } from "./styles";
 import cart from "../../assets/icons/cart.png";
 import { useSelector, useDispatch } from "react-redux";
-import { SeeProductsCart } from "../../context/reducers/pruductsCart";
+import { SeeProductsCart } from "../../context/reducers/reducer.Cart";
 export default function Navbar() {
   type DataProducts = {
     id: number;

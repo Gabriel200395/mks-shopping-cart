@@ -5,7 +5,7 @@ import {
   DecrementProductCart,
   IncrementProductCart,
   RemoveProductCart,
-} from "../../context/reducers/pruductsCart";
+} from "../../context/reducers/reducer.Cart";
 import { useEffect, useState } from "react";
 import { idText } from "typescript";
 
