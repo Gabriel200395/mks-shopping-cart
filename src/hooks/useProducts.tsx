@@ -69,11 +69,30 @@ export default function useProducts() {
     RequestProductsAll();
   }, []);
 
+  let c = 1;
   useEffect(() => {
     const setProduct = new Set();
 
     const filterProducts = addProductCartState.filter((product) => {
       let duplicateProducts = setProduct.has(product.id);
+
+      if (duplicateProducts) {
+        setAddProductCartState(
+          shoopingCart.map((item) => {
+            if (item.id === product.id) {
+              return {
+                ...item,
+                theAmount: item.theAmount + 1,
+                total: (item.theAmount + 1) * item.price,
+              };
+            }
+
+            return item;
+          })
+        );
+        console.log("Produto Ja existe no Carrinho");
+      }
+
       setProduct.add(product.id);
       return !duplicateProducts;
     });
@@ -92,7 +111,7 @@ export default function useProducts() {
   function addProductCart(product: DataProducts) {
     setAddProductCartState([
       ...addProductCartState,
-      { ...product, theAmount: 1 , total: Number(product.price) },
+      { ...product, theAmount: 1, total: Number(product.price) },
     ]);
   }
 
