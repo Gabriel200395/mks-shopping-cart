@@ -6,7 +6,7 @@ import {
 } from "../context/reducers/reducer.Products";
 import { AddProductShoppingCart } from "../context/reducers/reducer.Cart";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useGlobalState } from "../hooks";
 
 type DataProducts = {
   id: number;
@@ -24,44 +24,28 @@ type RespondeData = {
   count: number;
 };
 
-type DataState = {
-  stateProducts: {
-    products: null | DataProducts[];
-    loading: null | boolean;
-    error: null | boolean;
-  };
-
-  stateShoopingCart: {
-    shoopingCart: DataProducts[];
-    seeProducts: boolean;
-    product: DataProducts;
-  };
-};
-
 export default function useProducts() {
-  const { products } = useSelector((state: DataState) => state.stateProducts);
-  const { shoopingCart } = useSelector(
-    (state: DataState) => state.stateShoopingCart
-  );
+  const { state, dispatch } = useGlobalState();
+
+  const { shoopingCart } = state.stateShoopingCart;
+  const { products } = state.stateProducts;
 
   const [addProductCartState, setAddProductCartState] = useState<
     DataProducts[]
   >([]);
 
-  const dispacth = useDispatch();
-
   async function RequestProductsAll() {
     try {
-      dispacth(ProductFetchLoading(true));
+      dispatch(ProductFetchLoading(true));
       const productsData = await axios.get<RespondeData>(
         "https://mks-challenge-api-frontend.herokuapp.com/api/v1/products?page=1&rows=8&sortBy=id&orderBy=ASC"
       );
 
       const { products } = productsData.data;
-      dispacth(ProductFetchLoading(false));
-      dispacth(ProductsFetchSucess(products));
+      dispatch(ProductFetchLoading(false));
+      dispatch(ProductsFetchSucess(products));
     } catch (error) {
-      dispacth(ProductsFetchError(true));
+      dispatch(ProductsFetchError(true));
     }
   }
 
@@ -93,7 +77,7 @@ export default function useProducts() {
     });
 
     if (FilterProductsCart.length) {
-      dispacth(AddProductShoppingCart(FilterProductsCart));
+      dispatch(AddProductShoppingCart(FilterProductsCart));
     }
   }
 

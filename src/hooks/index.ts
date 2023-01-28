@@ -1,5 +1,7 @@
-import useProduct from "./useProducts";
+import useProduct from "./useProducts"; 
+import useGlobalState from "./useGlobalState"
 
 export {
-    useProduct
+    useProduct, 
+    useGlobalState
 }

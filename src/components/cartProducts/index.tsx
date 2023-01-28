@@ -1,5 +1,4 @@
 import { Container, Button, Span, Title, Img, Paragraph, Grid } from "./styles";
-import { useSelector, useDispatch } from "react-redux";
 import {
   SeeProductsCart,
   DecrementProductCart,
@@ -7,7 +6,7 @@ import {
   RemoveProductCart,
 } from "../../context/reducers/reducer.Cart";
 import { useEffect, useState } from "react";
-import { idText } from "typescript";
+import { useGlobalState } from "../../hooks";
 
 export default function CartProducts() {
   type DataProducts = {
@@ -21,18 +20,8 @@ export default function CartProducts() {
     total: number;
   };
 
-  type DataState = {
-    stateShoopingCart: {
-      shoopingCart: DataProducts[];
-      seeProducts: boolean;
-      product: DataProducts;
-    };
-  };
-
-  const dispatch = useDispatch();
-  const { shoopingCart, product } = useSelector(
-    (state: DataState) => state.stateShoopingCart
-  );
+  const { state, dispatch } = useGlobalState();
+  const { shoopingCart } = state.stateShoopingCart;
 
   const [productsCart, setProductsCart] = useState<DataProducts[]>([]);
 
@@ -94,12 +83,6 @@ export default function CartProducts() {
       return state.total + total;
     }, 0)
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-
-  /*   function PriceProduct(price: number, theAmoun: number){
-    let calculatePrice = price * theAmoun
-    return calculatePrice.toLocaleString("pt-BR", {style: "currency", currency: "BRL"})
-  } 
- */
 
   return (
     <Container>
