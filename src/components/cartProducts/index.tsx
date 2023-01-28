@@ -7,6 +7,7 @@ import {
   RemoveProductCart,
 } from "../../context/reducers/pruductsCart";
 import { useEffect, useState } from "react";
+import { idText } from "typescript";
 
 export default function CartProducts() {
   type DataProducts = {
@@ -24,11 +25,12 @@ export default function CartProducts() {
     stateShoopingCart: {
       shoopingCart: DataProducts[];
       seeProducts: boolean;
+      product: DataProducts;
     };
   };
 
   const dispatch = useDispatch();
-  const { shoopingCart } = useSelector(
+  const { shoopingCart, product } = useSelector(
     (state: DataState) => state.stateShoopingCart
   );
 
@@ -78,8 +80,8 @@ export default function CartProducts() {
 
   function removeProductItem(id: number) {
     let IdProductItem = productsCart.filter((product) => product.id !== id);
-    setProductsCart(IdProductItem);
 
+    setProductsCart(IdProductItem);
     return IdProductItem;
   }
 
@@ -92,6 +94,12 @@ export default function CartProducts() {
       return state.total + total;
     }, 0)
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+
+  /*   function PriceProduct(price: number, theAmoun: number){
+    let calculatePrice = price * theAmoun
+    return calculatePrice.toLocaleString("pt-BR", {style: "currency", currency: "BRL"})
+  } 
+ */
 
   return (
     <Container>
@@ -123,7 +131,7 @@ export default function CartProducts() {
                         >
                           -
                         </Button>
-                        <Span>{product.theAmount}</Span>
+                        <Span>{product?.theAmount}</Span>
                         <Button
                           onClick={() =>
                             dispatch(
@@ -137,7 +145,7 @@ export default function CartProducts() {
                         </Button>
                       </Grid>
                       <Span className="price">
-                        {product.total.toLocaleString("pt-BR", {
+                        {product?.total?.toLocaleString("pt-BR", {
                           style: "currency",
                           currency: "BRL",
                         })}

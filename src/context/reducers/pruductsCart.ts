@@ -18,16 +18,16 @@ type IntancesCartProducts = {
 
 const initialState: IntancesCartProducts = {
   shoopingCart: [],
-  seeProducts: false,
+  seeProducts: false, 
 };
 
 const pruductsCart = createSlice({
   name: "CART_PRODUCTS",
   initialState,
   reducers: {
-    AddShoppingCart(state, action: PayloadAction<PropertesProducts>) {
+    AddShoppingCart(state, action: PayloadAction<PropertesProducts[]>) { 
       return {
-        shoopingCart: [...state.shoopingCart, action.payload],
+        shoopingCart: action.payload,
         seeProducts: state.seeProducts,
       };
     },
@@ -35,27 +35,27 @@ const pruductsCart = createSlice({
     SeeProductsCart(state, action: PayloadAction<boolean>) {
       return {
         shoopingCart: state.shoopingCart,
-        seeProducts: action.payload,
+        seeProducts: action.payload, 
       };
     },
     IncrementProductCart(state, action: PayloadAction<PropertesProducts[]>) {
       return {
         shoopingCart: action.payload,
-        seeProducts: state.seeProducts,
+        seeProducts: state.seeProducts, 
       };
     },
 
     DecrementProductCart(state, action: PayloadAction<PropertesProducts[]>) {
       return {
         shoopingCart: action.payload,
-        seeProducts: state.seeProducts,
+        seeProducts: state.seeProducts, 
       };
-    }, 
+    },
 
     RemoveProductCart(state, action: PayloadAction<PropertesProducts[]>) {
       return {
         shoopingCart: action.payload,
-        seeProducts: state.seeProducts,
+        seeProducts: state.seeProducts, 
       };
     },
   },
@@ -65,7 +65,7 @@ export const {
   AddShoppingCart,
   SeeProductsCart,
   IncrementProductCart,
-  DecrementProductCart, 
-  RemoveProductCart
+  DecrementProductCart,
+  RemoveProductCart,
 } = pruductsCart.actions;
 export default pruductsCart.reducer;

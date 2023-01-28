@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   PRODUCTS_FETCH_LOADING,
   PRODUCTS_FETCH_SUCESS,
@@ -30,10 +30,23 @@ type DataState = {
     loading: null | boolean;
     error: null | boolean;
   };
+
+  stateShoopingCart: {
+    shoopingCart: DataProducts[];
+    seeProducts: boolean;
+    product: DataProducts;
+  };
 };
 
 export default function useProducts() {
   const { products } = useSelector((state: DataState) => state.stateProducts);
+  const { shoopingCart } = useSelector(
+    (state: DataState) => state.stateShoopingCart
+  );
+
+  const [addProductCartState, setAddProductCartState] = useState<
+    DataProducts[]
+  >([]);
 
   const dispacth = useDispatch();
 
@@ -56,8 +69,31 @@ export default function useProducts() {
     RequestProductsAll();
   }, []);
 
+  useEffect(() => {
+    const setProduct = new Set();
+
+    const filterProducts = addProductCartState.filter((product) => {
+      let duplicateProducts = setProduct.has(product.id);
+      setProduct.add(product.id);
+      return !duplicateProducts;
+    });
+
+    if (filterProducts.length) {
+      dispacth(AddShoppingCart(filterProducts));
+    }
+  }, [addProductCartState]);
+
+  useEffect(() => {
+    if (shoopingCart.length === 0) {
+      setAddProductCartState(shoopingCart);
+    }
+  }, [shoopingCart]);
+
   function addProductCart(product: DataProducts) {
-    return dispacth(AddShoppingCart({ ...product, theAmount: 1, total: Number(product.price)}));
+    setAddProductCartState([
+      ...addProductCartState,
+      { ...product, theAmount: 1 , total: Number(product.price) },
+    ]);
   }
 
   return {
