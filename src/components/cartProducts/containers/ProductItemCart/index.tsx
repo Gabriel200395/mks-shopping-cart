@@ -1,26 +1,20 @@
 import { Button, Span, Img, Paragraph, Grid } from "../../styles";
-import { DataProducts } from "../../../../interfaces";
 import {
   DecrementProductCart,
   IncrementProductCart,
   RemoveProductCart,
 } from "../../../../context/reducers/reducer.Cart";
-import { useGlobalState } from "../../../../hooks";
+import { useGlobalState, useProductsCart } from "../../../../hooks";
 
-interface ProdutoItemCartProps {
-  HandleClickDecrementProduct: (product: DataProducts) => DataProducts[];
-  HandleClickIncrementProduct: (product: DataProducts) => DataProducts[];
-  removeProductItem: (id: number) => DataProducts[];
-  productsCart: DataProducts[];
-}
-
-export default function ProductItemCart({
-  productsCart,
-  HandleClickDecrementProduct,
-  HandleClickIncrementProduct,
-  removeProductItem,
-}: ProdutoItemCartProps) {
+export default function ProductItemCart() {
   const { dispatch } = useGlobalState();
+
+  const {
+    HandleClickDecrementProduct,
+    HandleClickIncrementProduct,
+    removeProductItem,
+    productsCart,
+  } = useProductsCart();
 
   return (
     <Grid className="container-products-cart">
