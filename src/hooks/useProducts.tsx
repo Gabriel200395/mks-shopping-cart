@@ -81,15 +81,9 @@ export default function useProducts() {
     ItemsProductsDuplicates();
   }, [addProductCartState]);
 
-  useEffect(() => {
-    if (shoopingCart.length === 0) {
-      setAddProductCartState(shoopingCart);
-    }
-  }, [shoopingCart]);
-
   function addProductCart(product: DataProducts) {
     setAddProductCartState([
-      ...addProductCartState,
+      ...shoopingCart,
       { ...product, theAmount: 1, total: Number(product.price) },
     ]);
   }

@@ -37,7 +37,7 @@ export default function CartProducts() {
     let productIdIncrement = CalculateTheMountProduct(
       product.id,
       product.theAmount + 1,
-      Number(product.price)* (product.theAmount + 1)
+      Number(product.price) * (product.theAmount + 1)
     );
 
     setProductsCart(productIdIncrement);
@@ -72,7 +72,7 @@ export default function CartProducts() {
     .reduce((total, state) => {
       return state.total + total;
     }, 0)
-    .toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    .toLocaleString("pt-BR", { style: "currency", currency: "BRL" }); 
 
   return (
     <Container>
