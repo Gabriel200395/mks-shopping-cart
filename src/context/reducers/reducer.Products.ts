@@ -1,18 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-type PropertesProducts = {
-  id: number;
-  name: string;
-  brand: string;
-  description: string;
-  photo: string;
-  price: string;
-  theAmount: number;
-  total: number;
-};
+import { DataProducts } from "../../interfaces";
 
 type IntancesProducts = {
-  products: null | PropertesProducts[];
+  products: null | DataProducts[];
   loading: null | boolean;
   error: null | boolean;
 };
@@ -42,7 +32,7 @@ const stateProducts = createSlice({
       };
     },
 
-    ProductsFetchSucess(_, action: PayloadAction<PropertesProducts[]>) {
+    ProductsFetchSucess(_, action: PayloadAction<DataProducts[]>) {
       return {
         products: action.payload,
         loading: false,

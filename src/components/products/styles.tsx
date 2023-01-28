@@ -16,7 +16,7 @@ export const GridProcucts = styled("div")`
   justify-content: center;
 `;
 
-export const ProductItem = styled("div")`
+export const GridProductItem = styled("div")`
   height: 285px;
   width: 240px;
   margin: 10px 10px;
