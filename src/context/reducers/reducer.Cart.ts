@@ -1,18 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-type PropertesProducts = {
-  id: number;
-  name: string;
-  brand: string;
-  description: string;
-  photo: string;
-  price: number;
-  theAmount: number;
-  total: number;
-};
+import { DataProducts } from "../../interfaces";
 
 type IntancesCartProducts = {
-  shoopingCart: PropertesProducts[];
+  shoopingCart: DataProducts[];
   seeProducts: boolean;
 };
 
@@ -25,7 +15,7 @@ const stateCart = createSlice({
   name: "CartProduts",
   initialState,
   reducers: {
-    AddProductShoppingCart(state, action: PayloadAction<PropertesProducts[]>) {
+    AddProductShoppingCart(state, action: PayloadAction<DataProducts[]>) {
       return {
         shoopingCart: action.payload,
         seeProducts: state.seeProducts,
@@ -38,21 +28,21 @@ const stateCart = createSlice({
         seeProducts: action.payload,
       };
     },
-    IncrementProductCart(state, action: PayloadAction<PropertesProducts[]>) {
+    IncrementProductCart(state, action: PayloadAction<DataProducts[]>) {
       return {
         shoopingCart: action.payload,
         seeProducts: state.seeProducts,
       };
     },
 
-    DecrementProductCart(state, action: PayloadAction<PropertesProducts[]>) {
+    DecrementProductCart(state, action: PayloadAction<DataProducts[]>) {
       return {
         shoopingCart: action.payload,
         seeProducts: state.seeProducts,
       };
     },
 
-    RemoveProductCart(state, action: PayloadAction<PropertesProducts[]>) {
+    RemoveProductCart(state, action: PayloadAction<DataProducts[]>) {
       return {
         shoopingCart: action.payload,
         seeProducts: state.seeProducts,

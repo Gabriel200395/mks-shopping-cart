@@ -1,23 +1,13 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
+import { AddProductShoppingCart } from "../context/reducers/reducer.Cart";
+import { useGlobalState } from "../hooks";
+import { DataProducts } from "../interfaces";
 import {
   ProductFetchLoading,
   ProductsFetchSucess,
   ProductsFetchError,
 } from "../context/reducers/reducer.Products";
-import { AddProductShoppingCart } from "../context/reducers/reducer.Cart";
-import axios from "axios";
-import { useGlobalState } from "../hooks";
-
-type DataProducts = {
-  id: number;
-  name: string;
-  brand: string;
-  description: string;
-  photo: string;
-  price: number;
-  theAmount: number;
-  total: number;
-};
 
 type RespondeData = {
   products: DataProducts[];
@@ -62,7 +52,9 @@ export default function useProducts() {
               return {
                 ...cartItemProduct,
                 theAmount: cartItemProduct.theAmount + 1,
-                total: (cartItemProduct.theAmount + 1) * cartItemProduct.price,
+                total:
+                  (cartItemProduct.theAmount + 1) *
+                  Number(cartItemProduct.price),
               };
             }
 

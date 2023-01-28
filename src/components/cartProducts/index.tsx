@@ -7,19 +7,9 @@ import {
 } from "../../context/reducers/reducer.Cart";
 import { useEffect, useState } from "react";
 import { useGlobalState } from "../../hooks";
+import { DataProducts } from "../../interfaces";
 
 export default function CartProducts() {
-  type DataProducts = {
-    id: number;
-    name: string;
-    brand: string;
-    description: string;
-    photo: string;
-    price: number;
-    theAmount: number;
-    total: number;
-  };
-
   const { state, dispatch } = useGlobalState();
   const { shoopingCart } = state.stateShoopingCart;
 
@@ -47,7 +37,7 @@ export default function CartProducts() {
     let productIdIncrement = CalculateTheMountProduct(
       product.id,
       product.theAmount + 1,
-      product.price * (product.theAmount + 1)
+      Number(product.price)* (product.theAmount + 1)
     );
 
     setProductsCart(productIdIncrement);
@@ -59,7 +49,7 @@ export default function CartProducts() {
     let productIdDecrement = CalculateTheMountProduct(
       product.id,
       product.theAmount - 1,
-      product.price * (product.theAmount - 1)
+      Number(product.price) * (product.theAmount - 1)
     );
 
     setProductsCart(productIdDecrement);
