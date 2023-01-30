@@ -50,7 +50,7 @@ export default function useProductsCart() {
     return productIdDecrement;
   }
 
-  function removeProductItem(id: number) {
+  function RemoveProductItem(id: number) {
     let IdProductItem = productsCart.filter((product) => product.id !== id);
 
     setProductsCart(IdProductItem);
@@ -70,7 +70,7 @@ export default function useProductsCart() {
   return {
     HandleClickDecrementProduct, 
     HandleClickIncrementProduct, 
-    removeProductItem,
+    RemoveProductItem,
     productsCart, 
     finalAmountPayable,
   };

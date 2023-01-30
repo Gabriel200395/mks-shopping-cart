@@ -12,7 +12,7 @@ export default function ProductItemCart() {
   const {
     HandleClickDecrementProduct,
     HandleClickIncrementProduct,
-    removeProductItem,
+    RemoveProductItem,
     productsCart,
   } = useProductsCart();
 
@@ -64,7 +64,7 @@ export default function ProductItemCart() {
               <Button
                 className="close"
                 onClick={() =>
-                  dispatch(RemoveProductCart(removeProductItem(product.id)))
+                  dispatch(RemoveProductCart(RemoveProductItem(product.id)))
                 }
               >
                 x
