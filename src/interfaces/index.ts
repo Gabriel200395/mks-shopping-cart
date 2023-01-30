@@ -21,3 +21,9 @@ export interface DataState {
     seeProducts: boolean;
   };
 }
+ 
+
+export interface RespondeData {
+  products: DataProducts[];
+  count: number;
+};

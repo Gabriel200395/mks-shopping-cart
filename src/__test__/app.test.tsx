@@ -1,48 +1,21 @@
 import axios from "axios";
-import {
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-  within,
-} from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import store from "../context/store/store";
-import { DataProducts } from "../interfaces";
+import { productsData } from "../helpers/productsPropertes";
 import App from "../page/App";
 
 jest.mock("axios");
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-type RespondeData = {
-  products: DataProducts[];
-  count: number;
-};
+beforeEach(() =>
+  mockedAxios.get.mockImplementation(() =>
+    Promise.resolve({ data: productsData })
+  )
+);
 
-const productsData: RespondeData = {
-  products: [
-    {
-      id: 1,
-      name: "Iphone 11 128 GB",
-      brand: "Apple",
-      description:
-        "Grave vídeos 4K, faça belos retratos e capture paisagens inteiras com o novo sistema de câmera dupla.",
-      photo:
-        "https://mks-sistemas.nyc3.digitaloceanspaces.com/products/iphone11x128.webp",
-      price: "5000.00",
-      theAmount: 1,
-      total: 1,
-    },
-  ],
-
-  count: 8,
-};
-
-describe("Testting Application", () => {
+describe("Testing Application", () => {
   test("Testing Product requests", async () => {
-    mockedAxios.get.mockImplementation(() =>
-      Promise.resolve({ data: productsData })
-    );
     render(
       <Provider store={store}>
         <App />
@@ -56,10 +29,7 @@ describe("Testting Application", () => {
     );
   });
 
-  test("testing cart without products", async () => {
-    mockedAxios.get.mockImplementation(() =>
-      Promise.resolve({ data: productsData })
-    );
+  test("Testing cart without products", async () => {
     render(
       <Provider store={store}>
         <App />
@@ -81,10 +51,7 @@ describe("Testting Application", () => {
       screen.queryByRole("heading", { name: "Carrinho de compras" })
     ).not.toBeInTheDocument();
   });
-  test("testing product adding to cart", async () => {
-    mockedAxios.get.mockImplementation(() =>
-      Promise.resolve({ data: productsData })
-    );
+  test("Testing product adding to cart", async () => {
     render(
       <Provider store={store}>
         <App />
@@ -154,6 +121,7 @@ describe("Testting Application", () => {
     fireEvent.click(deleProductItem);
 
     expect(headerProductCartItem).not.toBeInTheDocument();
-    
+
+    expect(headerCart).not.toBeInTheDocument();
   });
 });
