@@ -2,41 +2,17 @@ import Navbar from "../components/navbar";
 import Products from "../components/products";
 import Footer from "../components/footer";
 import CartProducts from "../components/cartProducts";
-import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { SeeProductsCart } from "../context/reducers/reducer.Cart";
-
-//mudar nome do arquivo reducers  
-//state global aplicação 
-//arrumar nomes de funções!
-
+import { useGlobalState } from "../hooks";
 
 //loading projeto
-//refatorar projeto
+//teste projeto
+//arrumar css
 
 function App() {
-  type DataProducts = {
-    id: number;
-    name: string;
-    brand: string;
-    description: string;
-    photo: string;
-    price: string;
-    theAmount: number;
-  };
-
-  type DataState = {
-    stateShoopingCart: {
-      shoopingCart: DataProducts[];
-      seeProducts: boolean;
-    };
-  };
-
-  const { seeProducts, shoopingCart } = useSelector(
-    (state: DataState) => state.stateShoopingCart
-  );
-
-  const dispatch = useDispatch();
+  const { state, dispatch } = useGlobalState();
+  const { shoopingCart, seeProducts } = state.stateShoopingCart;
 
   useEffect(() => {
     if (shoopingCart.length < 1) {
