@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"
 import { useEffect, useState } from "react";
 import { AddProductShoppingCart } from "../context/reducers/reducer.Cart";
 import { useGlobalState } from "../hooks";

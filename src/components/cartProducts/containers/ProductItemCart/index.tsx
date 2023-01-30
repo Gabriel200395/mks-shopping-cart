@@ -20,15 +20,16 @@ export default function ProductItemCart() {
     <Grid className="container-products-cart">
       {productsCart.map((product, index) => {
         return (
-          <Grid className="product-item-cart" key={index}>
+          <Grid className="product-item-cart" key={index} >
             <Grid className="product-item-grid-cart-elements">
               <Img src={product.photo} alt={product.photo} height={46} />
-              <Paragraph>{product.name}</Paragraph>
+              <Paragraph data-testid="name-product">{product.name}</Paragraph>
               <Grid className="product-grid-elements">
                 <Span className="product-text-theAmount">Qnt</Span>
                 <Grid className="product-container-buttons">
                   <Grid className="product-grid-buttons">
                     <Button
+                    role-item="icrement"
                       disabled={product.theAmount <= 1 ? true : false}
                       onClick={() =>
                         dispatch(
@@ -40,7 +41,7 @@ export default function ProductItemCart() {
                     >
                       -
                     </Button>
-                    <Span>{product?.theAmount}</Span>
+                    <Span data-testid="count-product">{product?.theAmount}</Span>
                     <Button
                       onClick={() =>
                         dispatch(
@@ -53,7 +54,7 @@ export default function ProductItemCart() {
                       +
                     </Button>
                   </Grid>
-                  <Span className="price">
+                  <Span data-testid="price-product" className="price">
                     {product?.total?.toLocaleString("pt-BR", {
                       style: "currency",
                       currency: "BRL",
@@ -62,6 +63,7 @@ export default function ProductItemCart() {
                 </Grid>
               </Grid>
               <Button
+                data-testid="delete-product"
                 className="close"
                 onClick={() =>
                   dispatch(RemoveProductCart(RemoveProductItem(product.id)))

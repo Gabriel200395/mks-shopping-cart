@@ -12,7 +12,7 @@ import {
 } from "../../styles";
 import { DataProducts } from "../../../../interfaces";
 
-import cart from "../../../../assets/icons/shopping-bag.png";
+import cart from "../../../../assets/icons/shopping_bag.png";
 
 interface ProdutoItemProps {
   products: DataProducts[] | null;

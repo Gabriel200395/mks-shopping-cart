@@ -7,7 +7,7 @@ export default function HeaderCart() {
     <Grid className="container-checkout">
       <Grid className="price">
         <Span>Total:</Span>
-        <Span>{finalAmountPayable}</Span>
+        <Span data-testid="total-payable">{finalAmountPayable}</Span>
       </Grid>
       <Button>Finalizar Compra</Button>
     </Grid>
