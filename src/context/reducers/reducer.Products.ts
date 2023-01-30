@@ -24,18 +24,18 @@ const stateProducts = createSlice({
         error: null,
       };
     },
-    ProductsFetchError(_, action: PayloadAction<boolean>) {
+    ProductsFetchError(state, action: PayloadAction<boolean>) {
       return {
         products: [],
-        loading: false,
+        loading: state.loading,
         error: action.payload,
       };
     },
 
-    ProductsFetchSucess(_, action: PayloadAction<DataProducts[]>) {
+    ProductsFetchSucess(state, action: PayloadAction<DataProducts[]>) {
       return {
         products: action.payload,
-        loading: false,
+        loading: state.loading,
         error: false,
       };
     },

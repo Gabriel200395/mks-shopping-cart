@@ -10,13 +10,19 @@ import {
   H3,
   H4,
 } from "../../styles";
+import { DataProducts } from "../../../../interfaces";
 
 import cart from "../../../../assets/icons/shopping-bag.png";
-import { useProduct } from "../../../../hooks";
 
-export default function ProductItem() {
-  const { products, addProductCart } = useProduct();
+interface ProdutoItemProps {
+  products: DataProducts[] | null;
+  addProductCart: (product: DataProducts) => void;
+}
 
+export default function ProductItem({
+  products,
+  addProductCart,
+}: ProdutoItemProps) {
   return (
     <>
       {products?.map((product) => {

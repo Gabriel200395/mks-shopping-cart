@@ -5,7 +5,7 @@ import { DataProducts } from "../interfaces";
 export default function useProductsCart() {
   const { state } = useGlobalState();
   const { shoopingCart } = state.stateShoopingCart;
-
+  
   const [productsCart, setProductsCart] = useState<DataProducts[]>([]);
 
   function CalculateTheMountProduct(

@@ -25,7 +25,6 @@ function App() {
       <Navbar />
       <Products />
       <Footer />
-
       {seeProducts && <CartProducts />}
     </>
   );
