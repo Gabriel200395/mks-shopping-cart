@@ -61,7 +61,6 @@ export default function useProducts() {
             return cartItemProduct;
           })
         );
-        console.log("Produto Ja existe no Carrinho");
       }
 
       ProdutoKey.add(product.id);

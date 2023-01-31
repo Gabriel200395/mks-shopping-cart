@@ -27,6 +27,12 @@ describe("Testing Application", () => {
         screen.getByRole("heading", { name: "Iphone 11 128 GB" })
       ).toBeInTheDocument()
     );
+
+    expect(mockedAxios.get).toHaveBeenCalled();
+    expect(mockedAxios.get).toHaveBeenCalledWith(
+      "https://mks-challenge-api-frontend.herokuapp.com/api/v1/products?page=1&rows=8&sortBy=id&orderBy=ASC"
+    );
+    expect(mockedAxios.get).toHaveBeenCalledTimes(1);
   });
 
   test("Testing cart without products", async () => {
