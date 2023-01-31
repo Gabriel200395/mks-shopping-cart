@@ -6,7 +6,8 @@ export default function CartProducts() {
     <Container>
       <Grid>
         <HeaderCart />
-        <ProductItemCart />
+        <ProductItemCart />  
+        
       </Grid>
       <FooterCart />
     </Container>

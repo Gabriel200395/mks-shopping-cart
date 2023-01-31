@@ -11,6 +11,14 @@ export const Container = styled("div")`
   flex-direction: column;
   background: #0f52ba;
   box-shadow: -5px 0px 6px rgba(0, 0, 0, 0.13);
+   
+
+  @media (max-width: 768px) {
+    width: 330px; 
+    .product-item-cart {
+      width: 300px !important;
+    }  
+  }
 
   .container-checkout {
     height: 180px;
@@ -53,13 +61,17 @@ export const Container = styled("div")`
 
   .container-products-cart {
     overflow-y: auto;
-    width: 450px;
     height: 310px;
     padding-top: 30px;
     padding-bottom: 30px;
     cursor: pointer;
-    margin-left: 60px;
-  }
+  } 
+
+
+  .product-item-flex {
+    display: flex;
+    justify-content: center;
+  } 
 
   .header-cart {
     height: 101px;
@@ -83,7 +95,7 @@ export const Container = styled("div")`
       font-family: "Montserrat";
       font-style: normal;
       font-weight: 400;
-      font-size: 25px;
+      font-size: 28px;
       line-height: 33px;
       color: #fff;
       background-color: #000000;
@@ -148,7 +160,7 @@ export const Container = styled("div")`
       top: -6px;
       right: -5px;
       outline: none;
-    }
+    } 
   }
 
   .product-grid-elements {

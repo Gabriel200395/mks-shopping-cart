@@ -29,7 +29,8 @@ export default function ProductItemCart() {
     <Grid className="container-products-cart">
       {productsCart.map((product, index) => {
         return (
-          <Grid className="product-item-cart" key={index}>
+          <Grid className="product-item-flex" key={index}>
+             <Grid className="product-item-cart">
             <Grid className="product-item-grid-cart-elements">
               <Img src={product.photo} alt={product.photo} height={46} />
               <Paragraph data-testid="name-product">{product.name}</Paragraph>
@@ -83,6 +84,7 @@ export default function ProductItemCart() {
                 <i className="fas fa-times" aria-hidden="true" />
               </Button>
             </Grid>
+          </Grid>
           </Grid>
         );
       })}
