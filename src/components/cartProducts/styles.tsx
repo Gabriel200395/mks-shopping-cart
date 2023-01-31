@@ -16,9 +16,9 @@ export const Container = styled("div")`
    
 
   @media (max-width: 768px) {
-    width: 330px; 
+    width: 350px; 
     .product-item-cart {
-      width: 300px !important;
+      width: 313px !important;
     }  
   
   }
