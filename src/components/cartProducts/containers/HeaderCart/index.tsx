@@ -8,7 +8,12 @@ export default function HeaderCart() {
   return (
     <Grid className="header-cart">
       <Title>Carrinho de compras</Title>
-      <Button onClick={() => dispatch(SeeProductsCart(false))}>
+      <Button
+        onClick={() => {
+          window.document.querySelector("body")?.classList.remove("hidden");
+          dispatch(SeeProductsCart(false));
+        }}
+      >
         <i className="fas fa-times" aria-hidden="true" />
       </Button>
     </Grid>

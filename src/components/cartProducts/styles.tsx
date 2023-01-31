@@ -11,6 +11,8 @@ export const Container = styled("div")`
   flex-direction: column;
   background: #0f52ba;
   box-shadow: -5px 0px 6px rgba(0, 0, 0, 0.13);
+  min-height: 100px;
+ 
    
 
   @media (max-width: 768px) {
@@ -18,6 +20,7 @@ export const Container = styled("div")`
     .product-item-cart {
       width: 300px !important;
     }  
+  
   }
 
   .container-checkout {

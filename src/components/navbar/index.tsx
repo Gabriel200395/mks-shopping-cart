@@ -33,7 +33,10 @@ export default function Navbar() {
 
       <Button
         disabled={shoopingCart.length > 0 ? false : true}
-        onClick={() => dispatch(SeeProductsCart(true))}
+        onClick={() => {
+          window.document.querySelector("body")?.classList.add("hidden");
+          dispatch(SeeProductsCart(true));
+        }}
       >
         <Img src={cart} alt={cart} />
         <Span>{shoopingCart.length}</Span>

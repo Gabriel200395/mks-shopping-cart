@@ -31,9 +31,10 @@ export default function useProducts() {
         "https://mks-challenge-api-frontend.herokuapp.com/api/v1/products?page=1&rows=8&sortBy=id&orderBy=ASC"
       );
 
-      const { products } = productsData.data;
+       const { products } = productsData.data;
       dispatch(ProductFetchLoading(false));
-      dispatch(ProductsFetchSucess(products));
+      dispatch(ProductsFetchSucess(products)); 
+
     } catch (error) {
       dispatch(ProductsFetchError(true));
     }

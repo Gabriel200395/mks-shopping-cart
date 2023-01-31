@@ -8,7 +8,15 @@ export const Nav = styled("nav")`
   padding-right: 65px;
   padding-left: 65px;
   background-color: #0f52ba;
-  position: relative;
+  position: relative; 
+  
+  @media (max-width: 768px) {
+    nav {
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+    }
+  }
+   
 `;
 
 export const Logo = styled("div")`
