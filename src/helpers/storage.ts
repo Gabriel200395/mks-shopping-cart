@@ -1,7 +1,7 @@
 export default function storage(key: string) {
-  try {
+  if (JSON.parse(localStorage.getItem(key) as string)) {
     return JSON.parse(localStorage.getItem(key) as string);
-  } catch (error) {
-    return null;
   }
+
+  return [];
 }

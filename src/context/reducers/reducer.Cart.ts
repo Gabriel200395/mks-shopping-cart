@@ -2,17 +2,17 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import storage from "../../helpers/storage";
 import { DataProducts } from "../../interfaces";
 
-
 type IntancesCartProducts = {
-  shoopingCart: DataProducts[] | null;
+  shoopingCart: DataProducts[];
   seeProducts: boolean;
-}; 
-
+};
 
 const initialState: IntancesCartProducts = {
   shoopingCart: storage("CartProductsStorage"),
   seeProducts: false,
 };
+ 
+
 
 const stateCart = createSlice({
   name: "CartProduts",
