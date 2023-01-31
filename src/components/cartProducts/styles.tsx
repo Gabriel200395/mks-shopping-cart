@@ -64,7 +64,8 @@ export const Container = styled("div")`
       font-weight: 700;
       font-size: 20px;
       line-height: 15px;
-      color: #ffffff;
+      color: #ffffff; 
+      border: none;
     }
   }
 
@@ -114,7 +115,8 @@ export const Container = styled("div")`
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      outline: none;
+      outline: none; 
+      border: none;
     }
   }
 
@@ -222,7 +224,8 @@ export const Container = styled("div")`
         cursor: pointer;
         background-color: transparent;
         border: none;
-        border-radius: 4px !important;
+        border-radius: 4px !important; 
+        border: none;
       }
     }
   }
