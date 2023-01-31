@@ -1,4 +1,4 @@
-import {useEffect } from "react";
+import { useEffect } from "react";
 import { Button, Span, Img, Paragraph, Grid } from "../../styles";
 import {
   DecrementProductCart,
@@ -20,7 +20,7 @@ export default function ProductItemCart() {
   } = useProductsCart();
 
   useEffect(() => {
-    if (shoopingCart.length < 1) { 
+    if (shoopingCart.length < 1) {
       dispatch(SeeProductsCart(false));
     }
   }, [shoopingCart]);

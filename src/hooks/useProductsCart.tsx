@@ -3,7 +3,7 @@ import { useGlobalState } from "../hooks";
 import { DataProducts } from "../interfaces";
 
 export default function useProductsCart() {
-  const { state, dispatch} = useGlobalState();
+  const { state} = useGlobalState();
   const { shoopingCart } = state.stateShoopingCart;
   
   const [productsCart, setProductsCart] = useState<DataProducts[]>([]);
