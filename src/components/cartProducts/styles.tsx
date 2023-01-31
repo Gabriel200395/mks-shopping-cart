@@ -12,23 +12,28 @@ export const Container = styled("div")`
   background: #0f52ba;
   box-shadow: -5px 0px 6px rgba(0, 0, 0, 0.13);
   min-height: 100px;
- 
-   
 
   @media (max-width: 768px) {
-    width: 350px;  
-    .product-item-cart {
-      width: 313px !important; 
-
-    }  
+    width: 350px;
+    height: 70vh;
   
+    .container-products-cart {
+      height: 270px !important;
+    }   
+    .product-item-cart {
+      width: 313px !important;
+    }
+    .container-checkout {
+      height: 140px !important;
+    }
   }
 
   .container-checkout {
     height: 180px;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: end; 
+    background: #0f52ba;
 
     .price {
       display: flex;
@@ -69,13 +74,12 @@ export const Container = styled("div")`
     padding-top: 30px;
     padding-bottom: 30px;
     cursor: pointer;
-  } 
-
+  }
 
   .product-item-flex {
     display: flex;
     justify-content: center;
-  } 
+  }
 
   .header-cart {
     height: 101px;
@@ -164,12 +168,12 @@ export const Container = styled("div")`
       top: -6px;
       right: -5px;
       outline: none;
-    } 
+    }
   }
 
   .product-grid-elements {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     margin-right: 5px;
 
     .product-text-theAmount {
