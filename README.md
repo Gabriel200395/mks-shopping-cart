@@ -31,7 +31,6 @@
 
 Irá abrir uma página no browser (se não abrir, vá até [http://localhost:3000](http://localhost:3000/)).
 
-## :heart_eyes: Features
 
 <!-- <h3 align="left">Tela Mega Sena 😍.</h3>
 <h4 align="left">
