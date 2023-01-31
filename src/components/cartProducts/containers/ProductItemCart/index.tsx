@@ -7,6 +7,7 @@ import {
   SeeProductsCart,
 } from "../../../../context/reducers/reducer.Cart";
 import { useGlobalState, useProductsCart } from "../../../../hooks";
+import { removeScrollPage } from "../../../../helpers/scrollPage";
 
 export default function ProductItemCart() {
   const { dispatch, state } = useGlobalState();
@@ -21,7 +22,8 @@ export default function ProductItemCart() {
 
   useEffect(() => {
     if (shoopingCart.length < 1) {
-      dispatch(SeeProductsCart(false));
+      dispatch(SeeProductsCart(false)); 
+      removeScrollPage()
     }
   }, [shoopingCart]);
 

@@ -1,6 +1,7 @@
 import { Button, Title, Grid } from "../../styles";
 import { SeeProductsCart } from "../../../../context/reducers/reducer.Cart";
 import { useGlobalState } from "../../../../hooks";
+import { removeScrollPage } from "../../../../helpers/scrollPage";
 
 export default function HeaderCart() {
   const { dispatch } = useGlobalState();
@@ -10,7 +11,7 @@ export default function HeaderCart() {
       <Title>Carrinho de compras</Title>
       <Button
         onClick={() => {
-          window.document.querySelector("body")?.classList.remove("hidden");
+          removeScrollPage()
           dispatch(SeeProductsCart(false));
         }}
       >

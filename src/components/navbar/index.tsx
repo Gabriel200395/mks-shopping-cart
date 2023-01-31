@@ -2,6 +2,7 @@ import { Nav, Logo, H3, H4, Button, Span, Img } from "./styles";
 import cart from "../../assets/icons/cart.png";
 import { useSelector, useDispatch } from "react-redux";
 import { SeeProductsCart } from "../../context/reducers/reducer.Cart";
+import {AddScrollPageCart } from "../../helpers/scrollPage";
 export default function Navbar() {
   type DataProducts = {
     id: number;
@@ -34,7 +35,7 @@ export default function Navbar() {
       <Button
         disabled={shoopingCart.length > 0 ? false : true}
         onClick={() => {
-          window.document.querySelector("body")?.classList.add("hidden");
+          AddScrollPageCart();
           dispatch(SeeProductsCart(true));
         }}
       >
