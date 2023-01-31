@@ -14,7 +14,7 @@ export const Container = styled("div")`
   min-height: 100px;
 
   @media (max-width: 768px) {
-    width: 350px;
+    width: 100%;
     height: 100%;
   
     .container-products-cart {
