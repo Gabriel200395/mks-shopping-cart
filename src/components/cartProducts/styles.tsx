@@ -83,7 +83,7 @@ export const Container = styled("div")`
       font-family: "Montserrat";
       font-style: normal;
       font-weight: 400;
-      font-size: 28px;
+      font-size: 25px;
       line-height: 33px;
       color: #fff;
       background-color: #000000;

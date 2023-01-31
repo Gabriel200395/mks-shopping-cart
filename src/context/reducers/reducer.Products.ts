@@ -14,7 +14,7 @@ const initialState: IntancesProducts = {
 };
 
 const stateProducts = createSlice({
-  name: "PRODUCTS",
+  name: "Products",
   initialState,
   reducers: {
     ProductFetchLoading(_, action: PayloadAction<boolean>) {

@@ -3,9 +3,9 @@ import { useGlobalState } from "../hooks";
 import { DataProducts } from "../interfaces";
 
 export default function useProductsCart() {
-  const { state } = useGlobalState();
+  const { state, dispatch} = useGlobalState();
   const { shoopingCart } = state.stateShoopingCart;
-
+  
   const [productsCart, setProductsCart] = useState<DataProducts[]>([]);
 
   function CalculateTheMountProduct(
@@ -52,15 +52,15 @@ export default function useProductsCart() {
 
   function RemoveProductItem(id: number) {
     let IdProductItem = productsCart.filter((product) => product.id !== id);
-    localStorage.setItem("CartProductsStorage", JSON.stringify(IdProductItem));
-
+    localStorage.setItem("CartProductsStorage", JSON.stringify(IdProductItem)) 
+    
     setProductsCart(IdProductItem);
     return IdProductItem;
   }
 
   useEffect(() => {
     setProductsCart(shoopingCart);
-  }, [shoopingCart]);
+  }, [shoopingCart]); 
 
   const finalAmountPayable = productsCart
     .reduce((total, state) => {
@@ -69,10 +69,10 @@ export default function useProductsCart() {
     .toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
   return {
-    HandleClickDecrementProduct,
-    HandleClickIncrementProduct,
+    HandleClickDecrementProduct, 
+    HandleClickIncrementProduct, 
     RemoveProductItem,
-    productsCart,
+    productsCart, 
     finalAmountPayable,
   };
 }
