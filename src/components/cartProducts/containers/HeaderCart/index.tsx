@@ -8,7 +8,9 @@ export default function HeaderCart() {
   return (
     <Grid className="header-cart">
       <Title>Carrinho de compras</Title>
-      <Button onClick={() => dispatch(SeeProductsCart(false))}>x</Button>
+      <Button onClick={() => dispatch(SeeProductsCart(false))}>
+        <i className="fas fa-times" aria-hidden="true" />
+      </Button>
     </Grid>
   );
 }

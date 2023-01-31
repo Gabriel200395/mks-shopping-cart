@@ -69,7 +69,7 @@ export default function ProductItemCart() {
                   dispatch(RemoveProductCart(RemoveProductItem(product.id)))
                 }
               >
-                x
+                <i className="fas fa-times" aria-hidden="true" />
               </Button>
             </Grid>
           </Grid>
