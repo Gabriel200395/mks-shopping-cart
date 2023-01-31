@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import { SeeProductsCart } from "../context/reducers/reducer.Cart";
 import { useGlobalState } from "../hooks";
 import { DataProducts } from "../interfaces";
 
 export default function useProductsCart() {
-  const { state } = useGlobalState();
+  const { state, dispatch } = useGlobalState();
   const { shoopingCart } = state.stateShoopingCart;
   
   const [productsCart, setProductsCart] = useState<DataProducts[]>([]);
@@ -53,6 +54,7 @@ export default function useProductsCart() {
   function RemoveProductItem(id: number) {
     let IdProductItem = productsCart.filter((product) => product.id !== id);
 
+
     setProductsCart(IdProductItem);
     return IdProductItem;
   }
@@ -60,6 +62,13 @@ export default function useProductsCart() {
   useEffect(() => {
     setProductsCart(shoopingCart);
   }, [shoopingCart]);
+
+  useEffect(() => {
+    if (shoopingCart.length < 1) {
+      dispatch(SeeProductsCart(false));
+    }
+  }, [shoopingCart]); 
+
 
   const finalAmountPayable = productsCart
     .reduce((total, state) => {
