@@ -1,14 +1,16 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"; 
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import storage from "../../helpers/storage";
 import { DataProducts } from "../../interfaces";
 
 
 type IntancesCartProducts = {
-  shoopingCart: DataProducts[];
+  shoopingCart: DataProducts[] | null;
   seeProducts: boolean;
-};
+}; 
+
 
 const initialState: IntancesCartProducts = {
-  shoopingCart: [],
+  shoopingCart: storage("CartProductsStorage"),
   seeProducts: false,
 };
 
@@ -16,11 +18,23 @@ const stateCart = createSlice({
   name: "CartProduts",
   initialState,
   reducers: {
-    AddProductShoppingCart(state, action: PayloadAction<DataProducts[]>) {
-      return {
-        shoopingCart: action.payload,
-        seeProducts: state.seeProducts,
-      };
+    AddProductShoppingCart: {
+      reducer(state, action: PayloadAction<DataProducts[]>) {
+        return {
+          shoopingCart: action.payload,
+          seeProducts: state.seeProducts,
+        };
+      },
+
+      prepare(payload: DataProducts[]) {
+        return {
+          payload,
+          meta: {
+            storageProdcuts: payload,
+            Key: "CartProductsStorage",
+          },
+        };
+      },
     },
 
     SeeProductsCart(state, action: PayloadAction<boolean>) {
