@@ -17,10 +17,9 @@ export const Container = styled("div")`
 
   @media (max-width: 768px) {
     width: 350px;  
-    height: 80vh;
     .product-item-cart {
       width: 313px !important; 
-      
+
     }  
   
   }
