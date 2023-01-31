@@ -74,7 +74,7 @@ export const GridText = styled("div")`
 `;
 
 export const Button = styled("button")`
-  height: 31.91px;
+  height: 35px;
   width: 100%;
   display: flex;
   justify-content: center;
