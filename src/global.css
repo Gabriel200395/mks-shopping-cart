@@ -19,6 +19,16 @@
   overflow-y: hidden;
 }
 
-.hidden .product {
-  display: none;
+@media (max-width: 768px) {
+  .hidden .product {
+    display: none;
+  }
+
+  .hidden .footer {
+    display: none;
+  }
+
+  .hidden nav {
+    display: none;
+  }
 }

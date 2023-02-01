@@ -27,7 +27,7 @@ export default function ProductItem({
     <>
       {products?.map((product) => {
         return (
-          <GridProductItem key={product.id}>
+          <GridProductItem key={product.id} className="product">
             <GridImg>
               <Img src={product.photo} alt={product.photo} height={138} />
             </GridImg>
