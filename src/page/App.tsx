@@ -12,9 +12,11 @@ function App() {
 
   return (
     <>
-      <Navbar />
+     <div className="product">
+     <Navbar />
       <Products />
       <Footer />
+     </div>
       {seeProducts && <CartProducts />}
     </>
   );
