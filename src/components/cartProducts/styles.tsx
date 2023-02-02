@@ -26,8 +26,18 @@ export const Container = styled("div")`
     .container-checkout {
       height: 140px !important;
     }
-  }
+  } 
 
+   @media (min-width: 1400px) {
+    .container-products-cart {
+      height: 630px !important;
+    }   
+    .product-item-cart {
+      width: 313px !important;
+    }
+   
+  }
+ 
   .container-checkout {
     height: 180px;
     display: flex;
@@ -71,7 +81,7 @@ export const Container = styled("div")`
 
   .container-products-cart {
     overflow-y: auto;
-    height: 310px;
+    height: 400px;
     padding-top: 30px;
     padding-bottom: 30px;
     cursor: pointer;
